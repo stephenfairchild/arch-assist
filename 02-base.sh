@@ -92,7 +92,9 @@ pacstrap ${MNT} \
     wpa_supplicant \
     dialog \
     netctl \
-    dhpcd
+    dhpcd \
+    man \
+    man-pages
 
 # Fstab
 genfstab -U ${MNT} >> ${MNT}/etc/fstab
