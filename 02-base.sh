@@ -1,10 +1,5 @@
 #! /usr/bin/sh
 
-MNT=/mnt
-INSTALL_HOSTNAME=localhost
-INSTALL_USER=stephen
-INSTALL_PASSWORD=revolver
-
 # Safety settings
 set -uo pipefail
 
@@ -15,24 +10,92 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 exec 1> >(tee "stdout.log")
 exec 2> >(tee "stderr.log")
 
+# Configs
+MNT=/mnt
+INSTALL_DISK=
+INSTALL_DISK_PASSWORD=
+INSTALL_HOSTNAME=
+INSTALL_USER=
+INSTALL_PASSWORD=
+INSTALL_PASSWORD_CONFIRM=
+
+while [ ! -e "${INSTALL_DISK}" ]; do
+    lsblk -p
+    read -e -p "Install disk (e.g. /dev/sda, /dev/nvme0n1): " INSTALL_DISK
+done
+
+while [ -z "${INSTALL_DISK_PASSWORD}" ]; do
+    read -s -p "Disk password: " INSTALL_DISK_PASSWORD
+    echo
+done
+
+while [ -z "${INSTALL_HOSTNAME}" ]; do
+    read -p "Hostname: " INSTALL_HOSTNAME
+done
+
+while [ -z "${INSTALL_USER}" ]; do
+    read -p "Username: " INSTALL_USER
+done
+
+while [ -z "${INSTALL_PASSWORD}" ] || [ "${INSTALL_PASSWORD}" != "${INSTALL_PASSWORD_CONFIRM}" ]; do
+    read -s -p "User password: " INSTALL_PASSWORD
+    echo
+    read -s -p "Confirm user password: " INSTALL_PASSWORD_CONFIRM
+    echo
+done
+
+INSTALL_USER="$(echo ${INSTALL_USER} | sed "s/ /_/g")"
+INSTALL_PASSWORD="$(echo ${INSTALL_PASSWORD} | sed "s/'/\\\'/g")"
+
 # Clock
 timedatectl set-ntp true
 
+# Font
+setfont latarcyrheb-sun32
+
+# Format the partitions:
+BOOT_PART=$(lsblk -lnp -o NAME ${INSTALL_DISK} | sed -n '2p')
+ROOT_PART=$(lsblk -lnp -o NAME ${INSTALL_DISK} | sed -n '3p')
+
+mkfs.vfat -F32 ${BOOT_PART}
+
+echo "${INSTALL_DISK_PASSWORD}" | cryptsetup luksOpen ${ROOT_PART} luks
+sleep 5
+
+mkswap /dev/mapper/vg0-swap
+mkfs.ext4 /dev/mapper/vg0-root
+sleep 5
+
+swapon /dev/mapper/vg0-swap
+
+mount /dev/mapper/vg0-root ${MNT}
+
+mkdir ${MNT}/boot
+mount ${BOOT_PART} ${MNT}/boot
+
+mkdir ${MNT}/home
+mount /dev/mapper/vg0-home ${MNT}/home
+
 # Mirrors
-curl -s "https://www.archlinux.org/mirrorlist/?country=US&protocol=https" | sed 's/^#//' > /etc/pacman.d/mirrorlist
+curl -sL "https://www.archlinux.org/mirrorlist/?country=US&protocol=https" | sed 's/^#//' > /etc/pacman.d/mirrorlist
 
 # Install the base system
 pacman -Sy --noconfirm archlinux-keyring
 pacstrap ${MNT} \
     base \
     base-devel \
-    git \
+    git \ 
+    vim \
     intel-ucode \
     linux \
     linux-firmware \
     lvm2 \
     sudo \
-    terminus-font
+    terminus-font \
+    wpa_supplicant \
+    dialog \
+    netctl \
+    dhpcd
 
 # Fstab
 genfstab -U ${MNT} >> ${MNT}/etc/fstab
@@ -60,8 +123,7 @@ echo "::1       localhost" >> ${MNT}/etc/hosts
 echo "127.0.1.1 ${INSTALL_HOSTNAME}.localdomain ${INSTALL_HOSTNAME}" >> ${MNT}/etc/hosts
 
 # Create User
-arch_chroot "[ -d /home/${INSTALL_USER} ] && mv /home/${INSTALL_USER} /home/${INSTALL_USER}.$(date +%Y-%m-%d-%H-%M-%S)"
-arch_chroot "useradd -m -c '${INSTALL_FULLNAME}' ${INSTALL_USER}"
+arch_chroot "useradd -m ${INSTALL_USER}"
 
 # Sudoers
 arch_chroot "mkdir -p /etc/sudoers.d"
@@ -74,7 +136,6 @@ EOF
 cat > ${MNT}/etc/sudoers.d/99-install <<EOF
 ${INSTALL_USER} ALL=(ALL) NOPASSWD: ALL
 EOF
-
 
 # Install yay
 arch_chroot "sudo -u ${INSTALL_USER} git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
@@ -128,6 +189,5 @@ arch_chroot "echo -e '${INSTALL_PASSWORD}\n${INSTALL_PASSWORD}' | passwd ${INSTA
 rm -f ${MNT}/etc/sudoers.d/99-install
 
 # Done
-confirm "Setup complete. Press 'y' to reboot..."
 umount -R ${MNT}
 reboot

@@ -16,23 +16,30 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Install system packages
-pacman -S --noconfirm --needed neovim git zsh yay wget tmux sed package-query openssl openssh notification-daemon netctl jq fzf dunst curl
+pacman -S --noconfirm --needed neovim git zsh wget tmux sed openssl openssh notification-daemon jq fzf dunst
+
+# X
+pacman -S --noconfirm --needed xorg-server xorg-xinit
 
 # Install graphics card driver
 if $(lspci | grep "VGA.*Intel" >/dev/null 2>&1); then
   pacman -S --noconfirm libva-intel-driver xf86-video-intel
 fi
 
-
 # Desktop environment
-pacman -S --noconfirm --needed i3-gaps i3status i3lock dmenu feh polybar \
-powerline powerline-common powerline-fonts \
-flux-gui
-# Install fonts
-#???
+pacman -S --noconfirm --needed \
+i3-gaps i3status i3lock \
+dmenu feh \
+powerline powerline-common powerline-fonts
+
+
+# Install package-query, flux-gui, polybar?
+# Install yay?
+# Install fonts?
 
 # Browser
-pacman -S --noconfirm --needed brave
+pacman -S --noconfirm --needed chromium
+#pacman -S --noconfirm --needed brave
 
 # Install media tools
 pacman -S --noconfirm --needed pulseaudio pulseaudio-alsa pulseaudio-bluetooth \
@@ -40,23 +47,25 @@ blueman bluez bluez-utils \
 alsa-utils
 
 # Install programming languages
-pacman -S --noconfirm --needed ruby rust nvm nodejs python3 python2 perl php8 go
+pacman -S --noconfirm --needed ruby rust nodejs python3 python2 perl go
+# nvm??
 
 # Install dev tools
-pacman -S --noconfirm --needed terminator tmate saw mariadb aws-cli diff-so-fancy
+pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy
+## saw??
 
 # Install productivity tools
-yay gyazo unzip thunar the_silver_searcher
+#yay gyazo unzip thunar the_silver_searcher
 
 # Install Gaming tool
-pacman -S --noconfirm --needed playonlinux minecraft-launcher
+#pacman -S --noconfirm --needed playonlinux minecraft-launcher
 
 # Install docker
-pacman -S --noconfirm --needed docker
-groupadd docker
-[ -n "$USERNAME" ] && usermod -a -G docker $USERNAME
-systemctl enable docker.service
+#pacman -S --noconfirm --needed docker
+#groupadd docker
+#[ -n "$USERNAME" ] && usermod -a -G docker $USERNAME
+#systemctl enable docker.service
 
 # Import documents
-git clone git@github.com:stephenfairchild/documents.git
+#git clone git@github.com:stephenfairchild/documents.git
 
