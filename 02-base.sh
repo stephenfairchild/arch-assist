@@ -50,9 +50,6 @@ INSTALL_PASSWORD="$(echo ${INSTALL_PASSWORD} | sed "s/'/\\\'/g")"
 # Clock
 timedatectl set-ntp true
 
-# Font
-setfont latarcyrheb-sun32
-
 # Format the partitions:
 BOOT_PART=$(lsblk -lnp -o NAME ${INSTALL_DISK} | sed -n '2p')
 ROOT_PART=$(lsblk -lnp -o NAME ${INSTALL_DISK} | sed -n '3p')
@@ -84,7 +81,7 @@ pacman -Sy --noconfirm archlinux-keyring
 pacstrap ${MNT} \
     base \
     base-devel \
-    git \ 
+    git \
     vim \
     intel-ucode \
     linux \
