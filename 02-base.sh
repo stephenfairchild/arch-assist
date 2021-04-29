@@ -6,10 +6,6 @@ set -uo pipefail
 # Error handling / debugging
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-# Setup logging
-exec 1> >(tee "stdout.log")
-exec 2> >(tee "stderr.log")
-
 # Configs
 MNT=/mnt
 INSTALL_DISK=
@@ -92,7 +88,7 @@ pacstrap ${MNT} \
     wpa_supplicant \
     dialog \
     netctl \
-    dhpcd \
+    dhcpcd \
     man \
     man-pages
 

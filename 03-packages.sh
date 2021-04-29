@@ -24,7 +24,7 @@ pacman -S --noconfirm --needed \
 i3-gaps i3status i3lock \
 dmenu feh \
 powerline powerline-common powerline-fonts \
-thunar \ unzip
+thunar
 
 # Fonts
 pacman -S --noconfirm --needed ttf-fira-code
@@ -41,14 +41,13 @@ alsa-utils
 pacman -S --noconfirm --needed ruby rust nodejs python3 python2 perl go
 
 # Development
-pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy
+pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy prettier the_silver_searcher
 
 # Docker
 pacman -S --noconfirm --needed docker docker-compose
 systemctl start docker
 systemctl enable docker
-groupadd docker
-[ -n "$USERNAME" ] && usermod -a -G docker $USERNAME
+usermod -a -G docker stephen
 
 # Productivity
 pacman -S --noconfirm --needed lastpass-cli htop netcat
