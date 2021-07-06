@@ -38,10 +38,19 @@ blueman bluez bluez-utils \
 alsa-utils
 
 # Languages
-pacman -S --noconfirm --needed ruby rust nodejs python3 python2 perl go
+pacman -S --noconfirm --needed ruby rust nodejs python3 python2 perl go php
+
+# Code completion support in Vim
+pacman -S --noconfirm --needed python-neovim
+# Link composer so it can be ran globally for vim completion
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+# cd into /phpactor vim plugins and run `composer install`
 
 # Development
-pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy prettier the_silver_searcher
+pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy prettier the_silver_searcher npm android-studio
 
 # Docker
 pacman -S --noconfirm --needed docker docker-compose
