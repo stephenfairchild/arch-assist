@@ -15,6 +15,10 @@ INSTALL_USER=
 INSTALL_PASSWORD=
 INSTALL_PASSWORD_CONFIRM=
 
+function arch_chroot {
+    arch-chroot ${MNT} /bin/bash -c "${1}"
+}
+
 while [ ! -e "${INSTALL_DISK}" ]; do
     lsblk -p
     read -e -p "Install disk (e.g. /dev/sda, /dev/nvme0n1): " INSTALL_DISK
