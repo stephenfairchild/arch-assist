@@ -44,7 +44,7 @@ pacman -S --noconfirm --needed ruby rust nodejs python3 python2 perl go php
 pacman -S --noconfirm --needed python-neovim
 
 # Development
-pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy prettier the_silver_searcher npm android-studio
+pacman -S --noconfirm --needed terminator tmate mariadb aws-cli diff-so-fancy prettier the_silver_searcher npm
 
 # Docker
 pacman -S --noconfirm --needed docker docker-compose
