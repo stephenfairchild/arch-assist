@@ -28,15 +28,15 @@ touch ~/.ssh/id_rsa.pub
 touch ~/.ssh/config
 
 ## Create the AWS secrets placeholder
-mkdir -m700 -p ~/.aws
-touch ~/.aws/credentials
+#mkdir -m700 -p ~/.aws
+#touch ~/.aws/credentials
 
 ## Create new system files based on the lastpass files
 lpass show ssh-private-key --notes --fixed-strings | tee ~/.ssh/id_rsa > /dev/null
 lpass show ssh-public-key --notes --fixed-strings | tee ~/.ssh/id_rsa.pub > /dev/null
 lpass show ssh-config --notes --fixed-strings | tee ~/.ssh/config > /dev/null
-lpass show rs-aws-keys --notes --fixed-strings | tee ~/.aws/credentials > /dev/null
 lpass show vim-local --notes --fixed-strings | tee ~/.vim.local > /dev/null
+#lpass show rs-aws-keys --notes --fixed-strings | tee ~/.aws/credentials > /dev/null
 
 ## Set Permissions
 chmod 600 ~/.ssh/id_rsa
@@ -59,5 +59,5 @@ git clone git@github.com:stephenfairchild/usr-local-bin.git
 
 
 ## Configure AWS credentials
-aws configure
-eval $(aws ecr get-login --no-include-email)
+#aws configure
+#eval $(aws ecr get-login --no-include-email)
