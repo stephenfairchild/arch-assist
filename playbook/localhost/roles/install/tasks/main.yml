@@ -1,0 +1,4 @@
+---
+# Install my Arch linux system
+
+- import_tasks: packages.yml

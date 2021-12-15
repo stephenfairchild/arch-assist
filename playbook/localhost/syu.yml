@@ -1,0 +1,10 @@
+- name: All hosts up-to-date
+  hosts: localhost
+  become: true
+  become_user: root
+
+  tasks:
+    - name: full system upgrade
+      pacman:
+        update_cache: yes
+        upgrade: yes
