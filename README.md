@@ -9,12 +9,6 @@ With this toolkit those days are long gone and I can now
 spend my time doing way more valuable things like going through the Ansible docs to figure out how in the hell to provision `pacman` to run 
 as root. All jokes aside this is a representation of my system state and it makes disasters easy to recover from and change welcome.
 
-** Note that this is NOT my Dotfiles. Those are here: **
-
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
 
 ## Features
 
