@@ -57,6 +57,12 @@ git config --global user.name "Stephen Fairchild"
 chown stephen:stephen /usr/local/bin && cd /usr/local/bin
 git clone git@github.com:stephenfairchild/usr-local-bin.git
 
+# Install getnf for font management in Kitty
+git clone https://github.com/ronniedroid/getnf
+cd getnf
+./install.sh
+
+
 
 ## Configure AWS credentials
 #aws configure
