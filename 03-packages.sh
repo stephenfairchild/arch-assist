@@ -9,7 +9,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Install system packages
-pacman -S --noconfirm --needed neovim git zsh wget tmux sed openssl openssh notification-daemon jq fzf dunst
+pacman -S --noconfirm --needed neovim git zsh wget tmux sed openssl openssh notification-daemon jq fzf dunst starship
 
 # GUI + window server
 pacman -S --noconfirm --needed xorg-server xorg-xinit xorg-xrandr
@@ -23,7 +23,6 @@ fi
 pacman -S --noconfirm --needed \
 i3-gaps i3status i3lock \
 dmenu feh \
-powerline powerline-common powerline-fonts \
 thunar
 
 # Fonts
