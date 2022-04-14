@@ -9,7 +9,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Install system packages
-pacman -S --noconfirm --needed neovim git zsh wget tmux sed openssl openssh notification-daemon jq fzf dunst starship
+pacman -S --noconfirm --needed neovim git zsh wget tmux tmuxp sed openssl openssh notification-daemon jq fzf dunst starship
 
 # GUI + window server
 pacman -S --noconfirm --needed xorg-server xorg-xinit xorg-xrandr
@@ -53,3 +53,6 @@ usermod -a -G docker stephen
 
 # Productivity
 pacman -S --noconfirm --needed lastpass-cli htop netcat
+
+# Install fly for deployments
+curl -L https://fly.io/install.sh | sh
