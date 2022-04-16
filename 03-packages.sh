@@ -37,7 +37,7 @@ blueman bluez bluez-utils \
 alsa-utils
 
 # Languages
-pacman -S --noconfirm --needed ruby rust nodejs python3 python2 perl go php
+pacman -S --noconfirm --needed ruby rustup nodejs python3 python2 perl go php
 
 # Code completion support in Vim
 pacman -S --noconfirm --needed python-neovim
@@ -56,3 +56,5 @@ pacman -S --noconfirm --needed lastpass-cli htop netcat
 
 # Install fly for deployments
 curl -L https://fly.io/install.sh | sh
+
+rustup component add rls rust-analysis rust-src
