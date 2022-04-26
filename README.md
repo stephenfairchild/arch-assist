@@ -13,6 +13,7 @@ https://github.com/stephenfairchild/germinate/releases/download/latest/germinate
 # Extract and then run the install scripts
 
 tar -xvf germinate.tar.gz
+cd germinate
 ./pre-install
 ./install
 ```
