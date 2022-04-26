@@ -1,0 +1,4 @@
+1.) Run `./pre-install` script first to format your partitions.
+2.) Run the `./install` script
+
+The machine will reboot and your installation will be finalized.

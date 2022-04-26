@@ -1,2 +1,2 @@
 release:
-	tar -zcvf releases/latest.tar.gz src
+	tar -zcvf releases/germinate.tar.gz germinate
