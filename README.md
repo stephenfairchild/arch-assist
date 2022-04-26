@@ -36,12 +36,3 @@ In that scenario you can SSH into the new machine and run these commands.
 7. Set a password on the host machine: `$ passwd`
 8. Determine host machine Ip Address: `$ ip address` 
 9. From the existing system machine you can now SSH into the host `$ ssh root@<ip-address>`
-
-## Features
-
-- Completely destroy HDD partitions and create new ones
-- Install Arch Linux base kernel
-- Automates the `chroot` commands needed to get off the Live CD
-- Installs development tools and packages needed for graphics, etc.
-- Idempotent package management and upgrades
-
