@@ -2,16 +2,20 @@
 
 Arch Linux is not hard to install. But there are a series of steps that need completed in succession with precision in order to get a working machine. This package automates that process and gives a repeatable install. Germinate takes care of paritioning the machine, installing the base packages, setting up pacman, the mirrors, user groups, etc.
 
-### Download
-
-```
-curl -L -o germinate.tar.gz \
-https://github.com/stephenfairchild/germinate/releases/download/latest/germinate.tar.gz
-```
-
 ### Installation
 
-Download and extract the tarball. Run the pre-install first and then the install.
+```
+# Download the tarball
+
+curl -L -o germinate.tar.gz \
+https://github.com/stephenfairchild/germinate/releases/download/latest/germinate.tar.gz
+
+# Extract and then run the install scripts
+
+tar -xvf germinate.tar.gz
+./pre-install
+./install
+```
 
 ### From SSH
 
