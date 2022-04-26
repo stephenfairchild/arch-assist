@@ -9,7 +9,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Install system packages
-pacman -S --noconfirm --needed neovim git zsh wget tmux tmuxp sed openssl openssh notification-daemon jq fzf dunst starship
+pacman -S --noconfirm --needed neovim git zsh wget tmux tmuxp sed openssl openssh notification-daemon jq fzf dunst starship fuse2 dateutils
 
 # GUI + window server
 pacman -S --noconfirm --needed xorg-server xorg-xinit xorg-xrandr
