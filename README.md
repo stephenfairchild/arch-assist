@@ -1,5 +1,13 @@
 # System Playbook
 
+
+## Installation
+
+```
+curl -L -o latest.tar.gz \
+https://github.com/stephenfairchild/system-playbook/releases/download/v0.1.0/latest.tar.gz
+```
+
 ### On the host machine
 
 #### Setup WiFi
