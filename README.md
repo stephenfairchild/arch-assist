@@ -1,4 +1,4 @@
-# System Playbook
+# Germinate
 
 These scripts are meant to be ran when you're still on the Arch Linux live image. These get you _off_ of the
 live image. 
