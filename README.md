@@ -3,6 +3,12 @@
 These scripts are meant to be ran when you're still on the Arch Linux live image. These get you _off_ of the
 live image. 
 
+Specifically, here's what it does:
+
+- Completely destroy HDD partitions and create new ones (make sure you're backed up!)
+- Install Arch Linux base kernel
+- Automates the chroot commands needed to get off the Live CD
+
 ### Download
 
 ```
