@@ -17,6 +17,13 @@
 2. Determine host machine Ip Address: `$ ip address` 
 3. From the existing system machine you can now SSH into the host `$ ssh root@<ip-address>`
 
+### Parition the host
+
+- Run the command: 
+
+`$ curl -o- https://raw.githubusercontent.com/stephenfairchild/system-playbook/master/01-partition.sh | bash`
+
+- Follow the prompts
 
 ## Features
 
