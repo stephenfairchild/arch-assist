@@ -5,7 +5,7 @@
 #### Setup WiFi
 
 1. Boot a machine with a USB that includes the Arch live image
-2. Enter the interact prompt. `$ iwctl`
+2. Enter the interactive prompt. `$ iwctl`
 3. List all available WiFi devices: `$ device list`
 4. Scan for networks: `$ station <device-name> scan` *(There will be no output)
 5) Show available networks: `$ station <device-name> get-networks`
