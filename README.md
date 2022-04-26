@@ -11,9 +11,7 @@ https://github.com/stephenfairchild/system-playbook/releases/download/v0.1.0/lat
 
 ### Installation
 
-Download and extract the tarball. Run the pre-install first and then the install. The machine reboots after that and you should
-can then remove your live USB.
-
+Download and extract the tarball. Run the pre-install first and then the install.
 
 ### From SSH
 
