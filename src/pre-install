@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/sh
 
 # Safety settings
 set -uo pipefail
