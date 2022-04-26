@@ -82,7 +82,6 @@ pacstrap ${MNT} \
     base \
     base-devel \
     git \
-    vim \
     intel-ucode \
     linux \
     linux-firmware \
