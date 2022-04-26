@@ -1,6 +1,8 @@
 # Germinate
 
-Arch Linux is not hard to install. But there are a series of steps that need completed in succession with precision in order to get a working machine. This package automates that process and gives a repeatable install. Germinate takes care of paritioning the machine, installing the base packages, setting up pacman, the mirrors, user groups, etc.
+Arch Linux is not hard to install. But there are a series of steps that need completed in succession with precision in order to get a working machine. This package automates that process and gives a repeatable install. Germinate takes care of paritioning the machine, installing the base packages, setting up pacman, the mirrors, user groups, etc. 
+
+*Warning: this can be destructive. The pre-install scripts reformat your paritions so you'll lose any data that isn't backed up on your HDD
 
 ### Installation
 
