@@ -9,8 +9,7 @@ Arch Linux is not hard to install. But there are a series of steps that need com
 ```
 # Download the tarball
 
-curl -L -o germinate.tar.gz \
-https://github.com/stephenfairchild/germinate/releases/download/latest/germinate.tar.gz
+curl -L -o germinate.tar.gz bit.ly/3MvwOMV
 
 # Extract and then run the install scripts
 
