@@ -1,13 +1,21 @@
 # System Playbook
 
-This repository holds a set of commands to provision my daily driver.
+### On the host machine
 
+#### Setup WiFi
 
-I use Arch Linux (btw) and after years of use I've ended up with random config changes in random places that are impossible to track without a system like this in place. When the corporate big wigs ship me a new machine every 5 years those system settings get lost, or it takes me a year to get the machine to almost where it was. 
+1.) Boot a machine with a USB that includes the Arch live image
+2.) Enter the interact prompt. `$ iwctl`
+3.) List all available WiFi devices: `$ device list`
+4.) Scan for networks: `$ station <device-name> scan` *(There will be no output)
+5.) Show available networks: `$ station <device-name> get-networks`
+6.) Connect to the network: `$ station <device-name> connect <network-name> 
 
-With this toolkit those days are long gone and I can now
-spend my time doing way more valuable things like going through the Ansible docs to figure out how in the hell to provision `pacman` to run 
-as root. All jokes aside this is a representation of my system state and it makes disasters easy to recover from and change welcome.
+#### Connect to host with SSH
+
+1.) Set a password on the host machine: `$ passwd`
+2.) Determine host machine Ip Address: `$ ip address` 
+3.) From the existing system machine you can now SSH into the host `$ ssh root@<ip-address>`
 
 
 ## Features
