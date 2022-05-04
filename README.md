@@ -29,7 +29,7 @@ In that scenario you can SSH into the new machine and run these commands.
 3. List all available WiFi devices: `$ device list`
 4. Scan for networks: `$ station <device-name> scan` *(There will be no output)
 5. Show available networks: `$ station <device-name> get-networks`
-6. Connect to the network: `$ station <device-name> connect <network-name> 
+6. Connect to the network: `$ station <device-name> connect <network-name>`
 7. Set a password on the host machine: `$ passwd`
 8. Determine host machine Ip Address: `$ ip address` 
 9. From the existing system machine you can now SSH into the host `$ ssh root@<ip-address>`
