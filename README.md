@@ -24,12 +24,13 @@ cd germinate
 It can be really helpful to have two machines. One that's on the live image, one that's a full system. 
 In that scenario you can SSH into the new machine and run these commands. 
 
-1. Boot a machine with a USB that includes the Arch live image (host machine)
+1. Boot a machine with a USB that includes the Arch live image
 2. Enter the interactive prompt. `$ iwctl`
 3. List all available WiFi devices: `$ device list`
 4. Scan for networks: `$ station <device-name> scan` *(There will be no output)
 5. Show available networks: `$ station <device-name> get-networks`
 6. Connect to the network: `$ station <device-name> connect <network-name>`
 7. Set a password on the host machine: `$ passwd`
-8. Determine host machine Ip Address: `$ ip address` 
-9. From the existing system machine you can now SSH into the host `$ ssh root@<ip-address>`
+8. Determine host machine Ip Address: `$ ip route get 1.2.3.4 | awk '{print $7}'`
+9. Connect to SSH with `systemctl start sshd` (This uses openssh)
+9. From the another machine you can now SSH into the host `$ ssh root@<ip-address>`
